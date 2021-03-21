@@ -6,13 +6,11 @@ public class Win {
     public static boolean check(int[][] board) {
         boolean result  = false;
         for (int i = 0; i < board.length - 1; i++) {
-            for (int j = 0; j < board[i].length; j++) {
-                if ( checkHorizontal(board, i) || checkVertical(board, j) ) {
+                if ( checkHorizontal(board, i) || checkVertical(board, i) ) {
                     result = true;
                     break;
                 }
             }
-        }
         return  result;
     }
 
@@ -29,8 +27,8 @@ public class Win {
 
     public static boolean checkVertical(int[][] verticalLine , int cell) {
         boolean result = true;
-        for (int[] ints : verticalLine) {
-            if (ints[cell] == 0) {
+        for (int i = 0; i < verticalLine.length; i++) {
+            if (verticalLine[i][cell]  == 0) {
                 result = false;
                 break;
             }
