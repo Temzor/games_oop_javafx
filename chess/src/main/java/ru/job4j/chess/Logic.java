@@ -21,7 +21,15 @@ public final class Logic {
     }
 
     private boolean free(Cell[] steps) throws OccupiedCellException {
-        return true;
+        try {
+            for (int index = 0; index < steps.length; index++) {
+                int res = findBy(steps[index]);
+                if (res >= 0) throw new OccupiedCellException("Ячейка занята");
+            }
+        } catch (FigureNotFoundException e) {
+            return true;
+        }
+        return false;
     }
 
     public void clean() {
@@ -36,6 +44,6 @@ public final class Logic {
                 return index;
             }
         }
-        throw new FigureNotFoundException();
+        throw new FigureNotFoundException("Figure not found");
     }
 }
